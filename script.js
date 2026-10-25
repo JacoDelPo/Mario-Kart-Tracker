@@ -166,12 +166,43 @@ function renderRaces() {
         }
 
         if (!isClosed) {
+            let typeBuffer = "";
+            let typeTimeout = null;
+
+            select.addEventListener("keypress", function (e) {
+                if (e.key >= "0" && e.key <= "9") {
+                    e.preventDefault();
+                    clearTimeout(typeTimeout);
+                    typeBuffer += e.key;
+                    
+                    const val = parseInt(typeBuffer, 10);
+                    if (val >= 1 && val <= 12) {
+                        select.value = val;
+                        race[fieldKey] = select.value;
+                        saveCurrentSessionData(session);
+                    } else {
+                        typeBuffer = e.key;
+                        const singleVal = parseInt(typeBuffer, 10);
+                        if (singleVal >= 1 && singleVal <= 12) {
+                            select.value = singleVal;
+                            race[fieldKey] = singleVal;
+                            saveCurrentSessionData(session);
+                        }
+                    }
+
+                    typeTimeout = setTimeout(() => {
+                        typeBuffer = "";
+                    }, 600);
+                }
+            });
+
             select.addEventListener("keydown", function (e) {
                 if (e.key === "Backspace" || e.key === "Delete") {
                     e.preventDefault();
                     select.value = "";
                     race[fieldKey] = "";
                     saveCurrentSessionData(session);
+                    typeBuffer = "";
                 }
             });
 
@@ -196,7 +227,7 @@ function renderRaces() {
         inputTrack.disabled = isClosed;
         
         if (!isClosed) {
-            inputTrack.addEventListener("input", function () {
+            inputTrack.addEventListener("change", function () {
                 race.track = inputTrack.value;
                 saveCurrentSessionData(session);
             });
@@ -318,7 +349,7 @@ if (btnDebugClear) {
 }
 
 // Sincronizzazione continua dello sfondo tra le pagine
-const animDuration = 10; // Deve corrispondere ai secondi dell'animazione nel CSS (es. 10s)
+const animDuration = 10;
 let bgStartTime = sessionStorage.getItem('bgStartTime');
 
 if (!bgStartTime) {
