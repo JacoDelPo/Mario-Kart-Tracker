@@ -1,0 +1,220 @@
+@font-face {
+    font-family: "Wii";
+    src: url(fonts/wii.ttf) format("truetype");
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100px 100px; /* Regola in base alla dimensione della tua immagine */
+    }
+}
+
+html, body {
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: #d0d0d0;
+    background-image: url("images/background.png");
+    background-repeat: repeat;
+    background-size: 100px 100px; /* Eventuale ridimensionamento del pattern */
+    animation: moveBackground 5s linear infinite;
+}
+
+body.SessionSelect {
+    padding-top: 60px;
+    box-sizing: border-box;
+}
+
+body.homepage h2 {
+    font-size: 80px;       /* Riduce la dimensione del testo (e l'altezza complessiva) */
+    margin-top: 0px;      /* Riduce lo spazio sopra il titolo */
+    margin-bottom: 100px;   /* Riduce lo spazio sotto il titolo */
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;   /* uno sotto l'altro */
+    align-items: center;      /* centrati */
+    gap: 30px;                /* spazio tra un pulsante e l'altro */
+}
+
+.menu button {
+    width: 300px;             /* stessa larghezza per tutti */
+    padding: 24px 0;
+}
+
+.logo {
+    width: 40%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+@keyframes rainbowColor {
+    0% { color: #ff0000; }   /* Rosso */
+    12.5% { color: #ff7f00; }/* Arancione */
+    25% { color: #ffff00; }  /* Giallo */
+    37.5% { color: #00ff00; }/* Verde */
+    50% { color: #00ffff; }  /* Ciano */
+    62.5% { color: #0080ff; }/* Azzurro intermedio */
+    75% { color: #0000ff; }  /* Blu */
+    87.5% { color: #8b00ff; }/* Viola */
+    100% { color: #ff0000; } /* Rosso */
+}
+
+body.homepage h2 {
+    animation: rainbowColor 3s linear infinite;
+    -webkit-text-stroke: 0px;
+}
+
+h2 {
+    color: #2DB6E1;
+    text-align: center;
+    font-family: Wii;
+    font-size: 50px;
+    -webkit-text-stroke: 1px #006597; /* Spessore e colore del bordo */
+}
+
+.footer-text {
+    color: #343434;
+    font-family: Wii;
+    font-size: 16px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    margin: 0;
+}
+
+button {
+    font-family: Wii;
+    background-color: #343434;
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    display: block;
+    margin: 0 auto;
+}
+
+button:hover {
+    background-color: #494949;
+    transform: scale(1.1)
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.session_list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 220px); /* Larghezza fissa ridotta per farne stare di più */
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+    max-width: 1350px; /* Ampliato per consentire almeno 5 colonne */
+    margin: 0 auto;
+}
+
+.session-card {
+    width: 100%;
+    padding: 16px 0;
+    background-color: #343434;
+    color: white;
+    font-family: "Wii", sans-serif;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.session-card h3 {
+    margin: 0;
+    font-size: 30px;
+}
+
+.session-card p {
+    margin: 6px 0 0;
+    font-size: 18px;
+}
+
+.session-card:hover {
+    background-color: #494949;
+    transform: scale(1.05);
+}
+
+.session-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.race-table {
+    width: 95%;
+    max-width: 800px;
+    border-collapse: collapse;
+    background-color: white;
+    font-family: "Wii", sans-serif;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    table-layout: fixed; /* Blocca le dimensioni della tabella */
+}
+
+.race-table th, .race-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    overflow: hidden;
+}
+
+/* Larghezze fisse delle colonne */
+.race-table th:nth-child(1), .race-table td:nth-child(1) { width: 28%; } /* Track */
+.race-table th:nth-child(2), .race-table td:nth-child(2),
+.race-table th:nth-child(3), .race-table td:nth-child(3),
+.race-table th:nth-child(4), .race-table td:nth-child(4) { width: 20%; } /* Giocatori */
+.race-table th:nth-child(5), .race-table td:nth-child(5) { width: 12%; text-align: center; } /* X */
+
+.race-input {
+    width: 100%;
+    padding: 6px;
+    font-size: 20px;
+    box-sizing: border-box; /* Evita che il padding faccia sforare la larghezza */
+    font-family: "Wii", sans-serif;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.position-input {
+    width: 65px;        /* Leggermente più largo per fare spazio alla freccetta */
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+    background-color: white;
+    cursor: pointer;
+}
+
+.btn-delete {
+    font-size: 18px;   /* Rimpicciolisce la "X" */
+    padding: 2px 6px;  /* Riduce lo spazio interno del pulsante */
+    /* Se vuoi renderlo quadrato e più piccolo, puoi anche impostare: */
+     width: 36px; 
+     height: 36px; 
+}
+
+[id^="btnBack"] {
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    z-index: 1000;
+}

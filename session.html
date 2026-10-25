@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session - Mario Kart Wii Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="SessionSelect">
+    <h2 id="sessionTitle"></h2>
+
+    <div class="session-container">
+        <table class="race-table">
+            <thead>
+                <tr>
+                    <th>Track</th>
+                    <th>Lemonard</th>
+                    <th>Nicolicio</th>
+                    <th>Jack o'Po</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="raceTableBody">
+                <!-- Le gare compariranno qui dinamicamente -->
+            </tbody>
+        </table>
+        <button id="btnAddRace">Add Race</button>
+    </div>
+    <button id="btnEndSession" style="background-color: #a94442;">End Session</button>
+    <button id="btnBackSession">Back</button>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
